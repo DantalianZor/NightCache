@@ -2,6 +2,8 @@
 
 Auto-Install void Update() optimization fast system by Night Train Code (UniTask Attached from https://github.com/Cysharp/UniTask)
 
+The system caches all components, that need an void Update() into one list, then a single void Update() calls them all from the list
+
 # How to use
 
 1) Install NightCache components into your Unity project (it will calls all void Run, FixedRun and LateRun in scene)
