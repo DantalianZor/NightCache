@@ -3,7 +3,7 @@
     public interface INightCached
     {
         public bool IsActive();
-        public void SetNightComponentActive(NightCacheInstallMachine machine, bool status);
+        public void SetNightCacheSystemActive(bool status);
     }
 
     public interface INightRun : INightCached

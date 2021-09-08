@@ -6,12 +6,7 @@ namespace NTC.Global.Cache
     public sealed class NightCacheInstallMachine : NightInstallable
     {
         private readonly List<INightCached> systems = new List<INightCached>(8);
-        
-        public bool CheckNightCacheExist(NightCache nightCache)
-        {
-            return systems.Contains(nightCache);
-        }
-        
+
         protected override void OnInstall()
         {
             InstallNewSystems();
@@ -30,12 +25,12 @@ namespace NTC.Global.Cache
         
         protected override void OnLateEnable()
         {
-            foreach (var system in systems) system.SetNightComponentActive(this, true);
+            foreach (var system in systems) system.SetNightCacheSystemActive(true);
         }
 
         private void OnDisable()
         {
-            foreach (var system in systems) system.SetNightComponentActive(this, false);
+            foreach (var system in systems) system.SetNightCacheSystemActive(false);
         }
 
         private void OnDestroy()

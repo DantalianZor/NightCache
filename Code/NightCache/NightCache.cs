@@ -12,9 +12,8 @@ namespace NTC.Global.Cache
             return systemIsActiveInScene;
         }
 
-        public void SetNightComponentActive(NightCacheInstallMachine machine, bool status)
+        public void SetNightCacheSystemActive(bool status)
         {
-            if (!machine.CheckNightCacheExist(this)) return;
             systemIsActiveInScene = status;
         }
     }
