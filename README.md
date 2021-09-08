@@ -1,6 +1,6 @@
 ## NightCache - fast Update optimization System for Unity
 
-Auto-Install void Update() optimization fast system by Night Train Code (UniTask Attached from https://github.com/Cysharp/UniTask)
+Auto-Install void Update() optimization fast system by Night Train Code
 
 The system caches all components, that need an void Update() into one list, then a single void Update() calls them all from the list
 
