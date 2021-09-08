@@ -1,4 +1,4 @@
-namespace NTC.Global.System;
+namespace NTC.Global.System
 {
     public static class ConvertExt
     {
