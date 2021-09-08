@@ -21,9 +21,9 @@ If for some reason this did not happen, then add it manually.
 
 7) Everything is ready to use :)
 
-### For example:
+# For example:
 
-Old implementation:
+### Old implementation:
 
 ```sh
 public class UnitMovement : MonoBehaviour
@@ -40,7 +40,7 @@ public class UnitMovement : MonoBehaviour
 }
 ```
 
-New implementation:
+### New implementation:
 
 ```sh
 public class UnitMovement : NightCache, INightRun
@@ -56,3 +56,10 @@ public class UnitMovement : NightCache, INightRun
   }
 }
 ```
+# Interfaces
+
+| Interface | Replaces |
+| ------ | ------ |
+| INightRun : void Run() | void Update() |
+| INightFixedRun : void FixedRun() | void FixedUpdate() |
+| INightLateRun : void LateRun() | void LateUpdate() |
