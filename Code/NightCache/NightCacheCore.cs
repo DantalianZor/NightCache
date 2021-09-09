@@ -32,7 +32,7 @@ namespace NTC.Global.Cache
             if (nightCached is INightRun runSystem) RunSystems.Remove(runSystem);
             if (nightCached is INightFixedRun fixedRunSystem) FixedRunSystems.Remove(fixedRunSystem);
             if (nightCached is INightLateRun lateRunSystem) LateRunSystems.Remove(lateRunSystem);
-            
+
             UpdateCounts();
         }
         
@@ -62,9 +62,19 @@ namespace NTC.Global.Cache
 
         public static void Reset()
         {
+            ResetLists();
+            ResetActions();
+        }
+
+        private static void ResetLists()
+        {
             RunSystems?.Clear();
             FixedRunSystems?.Clear();
             LateRunSystems?.Clear();
+        }
+
+        private static void ResetActions()
+        {
             OnRun?.SetNull();
             OnFixedRun?.SetNull();
             OnLateRun?.SetNull();
