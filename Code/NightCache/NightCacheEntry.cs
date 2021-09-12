@@ -18,7 +18,7 @@ namespace NTC.Global.Cache
         {
             NightCacheCore.LateRun();
         }
-
+        
         private void OnDestroy()
         {
             NightCacheCore.Reset();

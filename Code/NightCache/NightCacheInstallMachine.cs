@@ -10,6 +10,7 @@ namespace NTC.Global.Cache
         protected override void OnInstall()
         {
             InstallNewSystems();
+            InitializeSystems();
         }
 
         private void InstallNewSystems()
@@ -23,6 +24,15 @@ namespace NTC.Global.Cache
             foreach (var system in systems) NightCacheCore.RemoveSystem(system);
         }
         
+        private void InitializeSystems()
+        {
+            foreach (var system in systems)
+            {
+                system.CacheBaseComponents();
+                if (system is INightInit initSystem) initSystem.Init();
+            }
+        }
+
         protected override void OnLateEnable()
         {
             foreach (var system in systems) system.SetNightCacheSystemActive(true);
