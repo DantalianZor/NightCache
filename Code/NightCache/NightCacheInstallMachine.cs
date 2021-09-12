@@ -10,12 +10,11 @@ namespace NTC.Global.Cache
         protected override void OnInstall()
         {
             InstallNewSystems();
-            InitializeSystems();
         }
 
         private void InstallNewSystems()
         {
-            GetComponents(systems);
+            GetComponents(systems); InitializeSystems();
             foreach (var system in systems) NightCacheCore.AddSystem(system);
         }
         
