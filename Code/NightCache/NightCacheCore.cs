@@ -64,6 +64,7 @@ namespace NTC.Global.Cache
         {
             ResetLists();
             ResetActions();
+			UpdateCounts();
         }
 
         private static void ResetLists()
