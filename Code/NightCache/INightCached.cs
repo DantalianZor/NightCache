@@ -4,7 +4,6 @@
     {
         public bool IsActive();
         public void SetNightCacheSystemActive(bool status);
-        public void CacheBaseComponents();
     }
 
     public interface INightInit : INightCached

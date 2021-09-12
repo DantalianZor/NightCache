@@ -26,11 +26,7 @@ namespace NTC.Global.Cache
         
         private void InitializeSystems()
         {
-            foreach (var system in systems)
-            {
-                system.CacheBaseComponents();
-                if (system is INightInit initSystem) initSystem.Init();
-            }
+            foreach (var system in systems) if (system is INightInit initSystem) initSystem.Init();
         }
 
         protected override void OnLateEnable()
