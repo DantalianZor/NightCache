@@ -14,9 +14,9 @@ namespace NTC.Global.Cache
         public static Action OnFixedRun;
         public static Action OnLateRun;
         
-        private static int runCount;
-        private static int fixedRunCount;
-        private static int lateRunCount;
+        private static int _runCount;
+        private static int _fixedRunCount;
+        private static int _lateRunCount;
 
         public static void AddSystem(INightCached nightCached)
         {
@@ -38,7 +38,7 @@ namespace NTC.Global.Cache
         
         public static void Run()
         {
-            for (var i = 0; i < runCount; i++)
+            for (var i = 0; i < _runCount; i++)
                 if (RunSystems[i].IsActive()) RunSystems[i].Run();
             
             OnRun?.Invoke();
@@ -46,7 +46,7 @@ namespace NTC.Global.Cache
 
         public static void FixedRun()
         {
-            for (var i = 0; i < fixedRunCount; i++)
+            for (var i = 0; i < _fixedRunCount; i++)
                 if (FixedRunSystems[i].IsActive()) FixedRunSystems[i].FixedRun();
             
             OnFixedRun?.Invoke();
@@ -54,7 +54,7 @@ namespace NTC.Global.Cache
 
         public static void LateRun()
         {
-            for (var i = 0; i < lateRunCount; i++)
+            for (var i = 0; i < _lateRunCount; i++)
                 if (LateRunSystems[i].IsActive()) LateRunSystems[i].LateRun();
             
             OnLateRun?.Invoke();
@@ -63,8 +63,8 @@ namespace NTC.Global.Cache
         public static void Reset()
         {
             ResetLists();
-            ResetActions();
-			UpdateCounts();
+            ResetActions(); 
+            UpdateCounts();
         }
 
         private static void ResetLists()
@@ -83,9 +83,9 @@ namespace NTC.Global.Cache
         
         private static void UpdateCounts()
         {
-            runCount = RunSystems.Count;
-            fixedRunCount = FixedRunSystems.Count;
-            lateRunCount = LateRunSystems.Count;
+            _runCount = RunSystems.Count;
+            _fixedRunCount = FixedRunSystems.Count;
+            _lateRunCount = LateRunSystems.Count;
         }
     }
 }
