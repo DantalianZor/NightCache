@@ -10,13 +10,13 @@ namespace NTC.Global.Cache
         private static readonly List<INightFixedRun> FixedRunSystems = new List<INightFixedRun>(64);
         private static readonly List<INightLateRun> LateRunSystems = new List<INightLateRun>(64);
 
-        public static Action OnRun;
-        public static Action OnFixedRun;
-        public static Action OnLateRun;
-        
         private static int _runCount;
         private static int _fixedRunCount;
         private static int _lateRunCount;
+        
+        public static Action OnRun;
+        public static Action OnFixedRun;
+        public static Action OnLateRun;
 
         public static void AddSystem(INightCached nightCached)
         {

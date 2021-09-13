@@ -9,7 +9,7 @@
             OnPreEnable();
             if (!installedOnEnable)
             {
-                OnInstall();
+                OnFirstEnable();
                 installedOnEnable = true;
             }
             OnLateEnable();
@@ -17,6 +17,6 @@
         
         protected virtual void OnPreEnable() { }
         protected virtual void OnLateEnable() { }
-        protected abstract void OnInstall();
+        protected abstract void OnFirstEnable();
     }
 }

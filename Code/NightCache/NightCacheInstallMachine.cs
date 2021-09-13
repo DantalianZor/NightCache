@@ -3,11 +3,11 @@ using NTC.Global.System;
 
 namespace NTC.Global.Cache
 {
-    public sealed class NightCacheInstallMachine : NightInstallable
+    public sealed class NightCacheInstallMachine : MonoInstallable
     {
         private readonly List<INightCached> systems = new List<INightCached>(8);
 
-        protected override void OnInstall()
+        protected override void OnFirstEnable()
         {
             InstallNewSystems();
         }

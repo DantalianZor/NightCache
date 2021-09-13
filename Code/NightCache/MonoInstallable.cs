@@ -2,7 +2,7 @@
 
 namespace NTC.Global.System
 {
-    public abstract class NightInstallable : MonoBehaviour
+    public abstract class MonoInstallable : MonoBehaviour
     {
         private bool installedOnEnable;
         
@@ -11,7 +11,7 @@ namespace NTC.Global.System
             OnPreEnable();
             if (!installedOnEnable)
             {
-                OnInstall();
+                OnFirstEnable();
                 installedOnEnable = true;
             }
             OnLateEnable();
@@ -19,6 +19,6 @@ namespace NTC.Global.System
         
         protected virtual void OnPreEnable() { }
         protected virtual void OnLateEnable() { }
-        protected abstract void OnInstall();
+        protected abstract void OnFirstEnable();
     }
 }
