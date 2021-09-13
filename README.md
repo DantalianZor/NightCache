@@ -12,7 +12,7 @@ The system caches all components, that need an void Update() into one list, then
 
 3) Inherit any class, which contains void Update / FixedUpdate / LateUpdate from «NightCache»
 
-4) Implement the required interfaces: «INightRun», «INightFixedRun» or «INightLateRun»
+4) Implement the required interfaces: «INightInit», «INightRun», «INightFixedRun» or «INightLateRun»
 
 5) Move the code from the old method to the new one
 
@@ -20,6 +20,8 @@ The system caches all components, that need an void Update() into one list, then
 If for some reason this did not happen, then add it manually.
 
 7) Everything is ready to use :)
+
+UPD: See below documentation for MonoInstallable & NightCacheInstallable
 
 # For example:
 
