@@ -28,6 +28,11 @@ If for some reason this did not happen, then add it manually.
 ```sh
 public class UnitMovement : MonoBehaviour
 {
+  private void Start()
+  {
+    //OnStart
+  }
+
   private void MoveUnit()
   {
     //Movement
@@ -43,8 +48,13 @@ public class UnitMovement : MonoBehaviour
 ### New implementation:
 
 ```sh
-public class UnitMovement : NightCache, INightRun
+public class UnitMovement : NightCache, INightInit, INightRun
 {
+  public void Init()
+  {
+    //OnStart
+  }
+
   private void MoveUnit()
   {
     //Movement
@@ -56,10 +66,65 @@ public class UnitMovement : NightCache, INightRun
   }
 }
 ```
+
 # Interfaces
 
-| Interface | Replaces |
+| Interface | Identical |
 | ------ | ------ |
+| INightRun : void Init() | void Start() |
 | INightRun : void Run() | void Update() |
 | INightFixedRun : void FixedRun() | void FixedUpdate() |
 | INightLateRun : void LateRun() | void LateUpdate() |
+
+# MonoInstallable & NightCacheInstallable
+
+Installables contains virtual void OnFirstEnable()
+This method is called once the first time the object is enabled
+
+MonoInstallable for MonoBehaviour, 
+NightCacheInstallable for NightCache
+
+## For example:
+
+Old:
+
+```sh
+public class UnitMovement : MonoBehaviour
+{
+  private bool installed;
+
+  private void OnEnable()
+  {
+    if (installed) return;
+    //DoSomething
+    installed = true;
+  }
+}
+```
+
+New:
+
+```sh
+public class UnitMovement : MonoInstallable
+{
+  protected override void OnFirstEnable()
+  {
+    //DoSomething
+  }
+}
+```
+
+```sh
+public class UnitMovement : NightCacheInstallable, INightRun
+{
+  protected override void OnFirstEnable()
+  {
+    //DoSomething
+  }
+  
+  public void Run()
+  {
+    //Movement
+  }
+}
+```
