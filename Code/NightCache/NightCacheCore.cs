@@ -10,9 +10,9 @@ namespace NTC.Global.Cache
         private static readonly List<INightFixedRun> FixedRunSystems = new List<INightFixedRun>(64);
         private static readonly List<INightLateRun> LateRunSystems = new List<INightLateRun>(64);
 
-        private static int _runCount;
-        private static int _fixedRunCount;
-        private static int _lateRunCount;
+        private static int runCount;
+        private static int fixedRunCount;
+        private static int lateRunCount;
         
         public static Action OnRun;
         public static Action OnFixedRun;
@@ -38,7 +38,7 @@ namespace NTC.Global.Cache
         
         public static void Run()
         {
-            for (var i = 0; i < _runCount; i++)
+            for (var i = 0; i < runCount; i++)
                 if (RunSystems[i].IsActive()) RunSystems[i].Run();
             
             OnRun?.Invoke();
@@ -46,7 +46,7 @@ namespace NTC.Global.Cache
 
         public static void FixedRun()
         {
-            for (var i = 0; i < _fixedRunCount; i++)
+            for (var i = 0; i < fixedRunCount; i++)
                 if (FixedRunSystems[i].IsActive()) FixedRunSystems[i].FixedRun();
             
             OnFixedRun?.Invoke();
@@ -54,7 +54,7 @@ namespace NTC.Global.Cache
 
         public static void LateRun()
         {
-            for (var i = 0; i < _lateRunCount; i++)
+            for (var i = 0; i < lateRunCount; i++)
                 if (LateRunSystems[i].IsActive()) LateRunSystems[i].LateRun();
             
             OnLateRun?.Invoke();
@@ -83,9 +83,9 @@ namespace NTC.Global.Cache
         
         private static void UpdateCounts()
         {
-            _runCount = RunSystems.Count;
-            _fixedRunCount = FixedRunSystems.Count;
-            _lateRunCount = LateRunSystems.Count;
+            runCount = RunSystems.Count;
+            fixedRunCount = FixedRunSystems.Count;
+            lateRunCount = LateRunSystems.Count;
         }
     }
 }
